@@ -71,6 +71,12 @@ def symboltxt_to_list(file:str):
 
 symbols = symboltxt_to_list('noting')
 # print(symbols)
-
-for i in symbols:
-    print(Stock(i).ltp())
+with open('output.txt', 'a') as f:
+    for i in range(len(symbols)):
+        s = symbols[i]
+        try:
+            f.write(f"{Stock(s).ltp()}, {s} \n")
+        except Exception:
+            f.write(f"Error , {s} \n")
+            print("error")
+        print(i)
